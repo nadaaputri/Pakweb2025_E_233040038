@@ -38,7 +38,8 @@
 
         </tbody>
     </table>
-
+    <a href="<?= BASEURL; ?>/user/tambah">Tambah Data User</a>
+    <br><br>
 </div>
 </body>
 </html>

@@ -9,6 +9,7 @@ class Controller
         require_once '../app/views/' . $view . '.php';
     }
 
+    // controller model methodnya
 
     public function model($model)
     {

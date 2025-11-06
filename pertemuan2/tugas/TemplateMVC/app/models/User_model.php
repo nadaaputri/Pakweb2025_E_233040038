@@ -33,4 +33,20 @@ class User_model
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+
+    public function tambahDataUser($data)
+    {
+        // $data berisi array $_POST
+        $query = "INSERT INTO users (name, email) VALUES (:name, :email)";
+
+        $this->db->query($query);
+        $this->db->bind('name', $data['name']);
+        $this->db->bind('email', $data['email']);
+
+        $this->db->execute();
+
+        // Mengembalikan jumlah baris yang terpengaruh
+        return $this->db->rowCount(); 
+    }
+
 }

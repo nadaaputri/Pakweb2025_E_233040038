@@ -32,7 +32,14 @@
                 <td><?= htmlspecialchars($user['email']); ?></td>
 
                 <!-- Link untuk melihat detail pengguna berdasarkan ID -->
-                <td><a href="index.php?id=<?= $user['id']; ?>" class="btn-small">Detail</a></td>
+                <td>
+                     <a href="<?= BASEURL; ?>/user/ubah/<?= $user['id']; ?>" class="btn-small">Ubah</a>
+
+                    <a href="<?= BASEURL; ?>/user/detail/<?= $user['id']; ?>" class="btn-small">Detail</a>
+
+                    <a href="<?= BASEURL; ?>/user/hapus/<?= $user['id']; ?>" class="btn-small" onclick="return confirm('Yakin?');">Hapus</a>
+                </td>
+               
             </tr>
         <?php endforeach; ?>
 

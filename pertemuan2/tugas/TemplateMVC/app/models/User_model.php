@@ -49,4 +49,16 @@ class User_model
         return $this->db->rowCount(); 
     }
 
+    public function ubahDataUser($data){
+        $query = "UPDATE users SET name = :name, email = :email WHERE id = :id";
+
+        $this->db->query($query);
+        $this->db->bind('name', $data['name']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

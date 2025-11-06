@@ -46,4 +46,22 @@ class User extends Controller
             exit;
         }
     }
+
+    public function ubah($id)
+    {
+        $data['judul'] = 'Ubah Data User';
+        $data['user'] = $this->model('User_model')->getUserById($id);
+        // Langsung panggil view-nya
+        $this->view('ubah', $data);
+    }
+
+    public function prosesUbah(){
+        if( $this->model('User_model')->ubahDataUser($_POST) > 0 ){
+            header('Location: ' . BASEURL . '/user');
+            exit;
+        } else {
+            header('Location: ' . BASEURL . '/user');
+            exit;
+        }
+    }
 }

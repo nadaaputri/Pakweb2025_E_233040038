@@ -14,9 +14,9 @@
 
     <!-- Menampilkan email pengguna -->
     <p>Email: <?= htmlspecialchars($user['email']); ?></p>
-
     <!-- Link untuk kembali ke halaman daftar pengguna -->
-    <a href="index.php" class="btn">Kembali ke Daftar</a>
+     <br><br>
+    <a href="<?= BASEURL; ?>/user" class="btn">Kembali ke Daftar</a>
 
 </div>
 </body>

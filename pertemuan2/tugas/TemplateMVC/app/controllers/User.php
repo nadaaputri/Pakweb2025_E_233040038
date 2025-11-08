@@ -64,4 +64,14 @@ class User extends Controller
             exit;
         }
     }
+
+    public function hapus($id){
+        if( $this->model('User_model')->hapusDataUser($id) > 0 ){
+            header('Location: ' . BASEURL . '/user');
+            exit;
+        } else {
+            header('Location: ' . BASEURL . '/user');
+            exit;
+        }
+    }
 }

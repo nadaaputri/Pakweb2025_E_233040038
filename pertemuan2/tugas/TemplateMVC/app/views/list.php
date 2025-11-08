@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pengguna</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css"></head>
 <body>
 <div class="container">
 
@@ -33,11 +32,11 @@
 
                 <!-- Link untuk melihat detail pengguna berdasarkan ID -->
                 <td>
-                     <a href="<?= BASEURL; ?>/user/ubah/<?= $user['id']; ?>" class="btn-small">Ubah</a>
+                     <a type="button" class="btn btn-warning" href="<?= BASEURL; ?>/user/ubah/<?= $user['id']; ?>" class="btn-small">Ubah</a>
 
-                    <a href="<?= BASEURL; ?>/user/detail/<?= $user['id']; ?>" class="btn-small">Detail</a>
+                    <a type="button" class="btn btn-secondary" href="<?= BASEURL; ?>/user/detail/<?= $user['id']; ?>" class="btn-small">Detail</a>
 
-                    <a href="<?= BASEURL; ?>/user/hapus/<?= $user['id']; ?>" class="btn-small" onclick="return confirm('Yakin?');">Hapus</a>
+                    <a type="button" class="btn btn-danger" href="<?= BASEURL; ?>/user/hapus/<?= $user['id']; ?>" class="btn-small" onclick="return confirm('Anda akan menghapus data ini?');">Hapus</a>
                 </td>
                
             </tr>
@@ -45,8 +44,9 @@
 
         </tbody>
     </table>
-    <a href="<?= BASEURL; ?>/user/tambah">Tambah Data User</a>
+    <a type="button" class="btn btn-primary" href="<?= BASEURL; ?>/user/tambah">Tambah Data User</a>
     <br><br>
 </div>
+<script src="<?= BASEURL; ?>/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

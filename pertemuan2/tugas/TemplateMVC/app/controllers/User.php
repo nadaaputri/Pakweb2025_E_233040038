@@ -27,6 +27,8 @@ class User extends Controller
         $data['judul'] = 'Tambah Data User';
         // Langsung panggil view-nya
         $this->view('tambah', $data);
+        $this->view('footer', $data);
+        $this->view('header', $data);
     }
 
     /**
@@ -53,6 +55,8 @@ class User extends Controller
         $data['user'] = $this->model('User_model')->getUserById($id);
         // Langsung panggil view-nya
         $this->view('ubah', $data);
+        $this->view('footer', $data);
+        $this->view('header', $data);
     }
 
     public function prosesUbah(){

@@ -16,7 +16,7 @@
     <p>Email: <?= htmlspecialchars($user['email']); ?></p>
     <!-- Link untuk kembali ke halaman daftar pengguna -->
      <br><br>
-    <a href="<?= BASEURL; ?>/user" class="btn">Kembali ke Daftar</a>
+    <a class="btn btn-secondary" href="<?= BASEURL; ?>/user" class="btn">Kembali ke Daftar</a>
 
 </div>
 <script src="<?= BASEURL; ?>/js/bootstrap.bundle.min.js"></script>

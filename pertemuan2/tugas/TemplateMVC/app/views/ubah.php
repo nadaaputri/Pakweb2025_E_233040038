@@ -6,26 +6,26 @@
     <title><?= $data['judul']; ?></title>
 </head>
 <body>
-    <h3>Ubah Data User</h3>
+    <h3 class="text-center mb-5">Ubah Data User</h3>
 
-    <form action="<?= BASEURL; ?>/user/prosesUbah" method="post">
+    <form class="text-center" action="<?= BASEURL; ?>/user/prosesUbah" method="post">
         <input type="hidden" name='id' value="<?= $user['id']; ?>">
 
-        <label for="name">Nama:</label>
-        <br>
-        <input type="text" id="name" name="name" <?= $user['name']; ?> required>
-        <br><br>
+        <div class="mb-3">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" <?= $user['name']; ?> required>
+        </div>
 
-        <label for="email">Email:</label>
-        <br>
-        <input type="email" id="email" name="email" <?= $user['email']; ?> required>
-        <br><br>
+        <div class="mb-5">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" <?= $user['email']; ?> required>
+        </div>
+        <div class="d-flex justify-content-evenly">
+            <a class="btn btn-secondary" href="<?= BASEURL; ?>/user">Kembali ke Daftar</a>
+            <button class="btn btn-primary" type="submit" >Ubah Data</button>
+        </div>
 
-        <button type="submit">Ubah Data</button>
     </form>
-
-    <br>
-    <a href="<?= BASEURL; ?>/user">Kembali ke Daftar</a>
 
 </body>
 </html>

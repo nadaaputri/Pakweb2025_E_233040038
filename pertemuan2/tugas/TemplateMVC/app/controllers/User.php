@@ -26,9 +26,9 @@ class User extends Controller
     {
         $data['judul'] = 'Tambah Data User';
         // Langsung panggil view-nya
+        $this->view('templates/header', $data);
         $this->view('tambah', $data);
-        $this->view('footer', $data);
-        $this->view('header', $data);
+        $this->view('templates/footer', $data);
     }
 
     /**
@@ -37,16 +37,18 @@ class User extends Controller
      */
     public function prosesTambah()
     {
-        // Panggil model untuk tambah data, kirimkan data $_POST
         if( $this->model('User_model')->tambahDataUser($_POST) > 0 ) {
             // Jika berhasil, redirect kembali ke halaman utama user
             header('Location: ' . BASEURL . '/user');
+            Flasher::setFlash('berhasil', 'ditambahkan', 'sukses');
             exit;
         } else {
             // Jika gagal, redirect juga (bisa ditambahi pesan error)
             header('Location: ' . BASEURL . '/user');
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
             exit;
         }
+        // Panggil model untuk tambah data, kirimkan data $_POST
     }
 
     public function ubah($id)
@@ -54,17 +56,20 @@ class User extends Controller
         $data['judul'] = 'Ubah Data User';
         $data['user'] = $this->model('User_model')->getUserById($id);
         // Langsung panggil view-nya
+        $this->view('templates/header', $data);
         $this->view('ubah', $data);
-        $this->view('footer', $data);
-        $this->view('header', $data);
+        $this->view('templates/footer', $data);
     }
 
     public function prosesUbah(){
         if( $this->model('User_model')->ubahDataUser($_POST) > 0 ){
             header('Location: ' . BASEURL . '/user');
+            Flasher::setFlash('berhasil', 'diubah', 'sukses');
+             exit;
             exit;
         } else {
             header('Location: ' . BASEURL . '/user');
+            Flasher::setFlash('gagal', 'diubah', 'danger');
             exit;
         }
     }

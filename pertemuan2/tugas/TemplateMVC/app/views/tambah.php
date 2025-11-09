@@ -7,26 +7,21 @@
 </head>
 <body>
     
-    <h3>Tambah Data User</h3>
+    <h3 class="text-center mb-5">Tambah Data User</h3>
 
-    <form action="<?= BASEURL; ?>/user/prosesTambah" method="post">
-        
-        <label for="name">Nama:</label>
-        <br>
-        <input type="text" id="name" name="name" required>
-        <br><br>
-
+    <form class="text-center" action="<?= BASEURL; ?>/user/prosesTambah" method="post">
+        <div class="mb-3">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+        </div>    
+        <div class="mb-5">
         <label for="email">Email:</label>
-        <br>
         <input type="email" id="email" name="email" required>
-        <br><br>
-
-        <button type="submit">Tambah Data</button>
-
+        </div>
+        <div class="d-flex justify-content-evenly">
+            <a class="btn btn-secondary" href="<?= BASEURL; ?>/user">Kembali ke Daftar</a>
+            <button type="submit" class="btn btn-primary">Tambah Data</button>
+        </div>
     </form>
-    
-    <br>
-    <a href="<?= BASEURL; ?>/user">Kembali ke Daftar</a>
-
 </body>
 </html>

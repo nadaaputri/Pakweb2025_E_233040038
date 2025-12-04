@@ -38,9 +38,8 @@ class User extends Authenticatable
     }
 
     //Relasi: Satu user memiliki banyak post (One-to-Many)
-    public function posts(): HasMany
+    public function posts()
     {
-        return $this->hasMany(Post::class, 'user_id');
-        //user_id adalah foreign key di tabel posts yang menunjuk ke users.id
+        return $this->hasMany(Post::class);
     }
 }

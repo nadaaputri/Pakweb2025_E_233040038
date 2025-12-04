@@ -15,7 +15,7 @@ class Post extends Model
     protected $with = ['author', 'category'];
 
     //Relasi Many-to-One: Post ditulis oleh satu user (author)
-    public function author(): BelongsTo
+    public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
         //user_id adalah foreign key di tabel posts 
@@ -23,11 +23,15 @@ class Post extends Model
     }
 
     //Relasi Many-to-One: Post masuk dalam satu kategori
-    public function category(): BelongsTo
+    public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id');        
+        return $this->belongsTo(Category::class);        
         //category_id adalah foreign key di tabel posts
         //Contoh: $post->category->name 
+    }
+    
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     //Query scope: Filter pencarian berdasarkan search, category, atau author

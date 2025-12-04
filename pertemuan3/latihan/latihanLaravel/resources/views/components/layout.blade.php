@@ -7,17 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- Tambahkan slot baru dengan nama $title --}}
     <title>{{ $title }}</title>
+    @vite('resources/css/app.css')
 </head>
 
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/blog">Blog</a>
-        <a href="/categories">Categories</a>
-        <a href="/posts">Posts</a>
-        <a href="/contact">Contact</a>
-    </nav>
+    <div>
+        <nav class="bg-gray-500">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/blog">Blog</a>
+            <a href="/categories">Categories</a>
+            <a href="/posts">Posts</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </div>
     
     {{-- Area ini nantinya akan diisi oleh konten dari halaman lain (Slot) --}}
     {{ $slot }} 

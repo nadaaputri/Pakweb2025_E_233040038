@@ -13,9 +13,9 @@ class Category extends Model
     protected $guarded = ['id'];
 
     //Relasi: Satu kategori memiliki banyak post (One-to-Many)
-    public function posts(): HasMany
+    public function posts()
     {
-        return $this->hasMany(Post::class, 'category_id');
+        return $this->hasMany(Post::class);
         //category_id adalah foreign key di tabel posts yang menunjuk ke categories.id
         //artinya satu kategori bisa memiliki banyak postingan
     }

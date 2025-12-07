@@ -12,6 +12,11 @@ class Category extends Model
     //Kolom yang dilindungi dari mass assignment (hanya 'id' yang tidak boleh diisi manual)
     protected $guarded = ['id'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug'; //Gunakan kolom 'slug' untuk route model binding
+    }
+
     //Relasi: Satu kategori memiliki banyak post (One-to-Many)
     public function posts()
     {

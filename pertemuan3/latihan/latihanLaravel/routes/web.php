@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardCategoryController;
 
 //contoh route untuk menampilkan view
 Route::get('/', function () {
@@ -27,6 +29,7 @@ Route::get('/blog', function () {
 });
 //->middleware('auth');
 
+Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories', function () {
     return view('categories');
 });
@@ -60,4 +63,29 @@ Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
 //Route logout - hanya untuk yang sudah login
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/categories', [CategoryController::class, 'index']);
+
+//Route untuk dashboard posts - hanya untuk yang sudah login
+Route::middleware(['auth'])->group(function () {
+
+    // 1. Dashboard index
+    Route::get('/dashboard', [DashboardPostController::class, 'index'])->name('dashboard.index');
+    Route::resource('/dashboard/categories', DashboardCategoryController::class)->except('show');
+
+    // 2. Create: Menampilkan formulir tambah postingan
+    Route::get('/dashboard/create', [DashboardPostController::class, 'create'])->name('dashboard.create');
+
+    // 3. Store: Proses menyimpan postingan baru ke database
+    Route::post('/dashboard/posts', [DashboardPostController::class, 'store'])->name('dashboard.store');
+
+    // Edit: Menampilkan form edit
+    Route::get('/dashboard/{post:slug}/edit', [DashboardPostController::class, 'edit'])->name('dashboard.edit');
+    
+    // Update: Proses menyimpan perubahan
+    Route::put('/dashboard/{post:slug}', [DashboardPostController::class, 'update'])->name('dashboard.update');
+
+    // Delete: Menghapus data
+    Route::delete('/dashboard/{post:slug}', [DashboardPostController::class, 'destroy'])->name('dashboard.destroy');
+
+    // 4. Show: Menampilkan detail postingan tertentu
+    Route::get('/dashboard/{post:slug}', [DashboardPostController::class, 'show'])->name('dashboard.show');
+});
